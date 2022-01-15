@@ -4,15 +4,35 @@ const removeAll = document.querySelector(".remove-all")
 const addTask = document.querySelector(".add-task")
 
 let arrayTasks = []
-let id = 0
+
+getArrayLocalStorage()
+function getArrayLocalStorage(){
+    document.addEventListener('DOMContentLoaded', ()=>{
+        arrayTasks = JSON.parse(localStorage.getItem("arrayTasks")) || []
+        print()
+    })
+    tasks.addEventListener("click", deleteTask)
+}
+
+function deleteTask(e){
+    // if (e.target.tagName == 'SPAN') {
+    //     const deleteId = parseInt(e.target.getAttribute('task-id'));
+    //     arrayTasks = arrayTasks.filter(task => task.id == deleteId);
+    //     print();
+    // }
+    const idTask = e.target.getAttribute('task-id')
+    arrayTasks = arrayTasks.filter(task => task.idTask == !idTask)
+    print()
+
+}
+
 function task(){
-    id = id + 1;
     const task = input.value.trim();
 
     if (task !== "" && task !== null) {
         const objTasks = {
             task,
-            idTask: id
+            idTask: Date.now()
         }
         arrayTasks = [...arrayTasks, objTasks]
     }else{
@@ -20,22 +40,27 @@ function task(){
             icon: 'error',
             title: 'Oops...',
             text: 'Please add a Task!'
-            })
+        })
     }
     
-    createTask()
+    print()
     input.value = ""
 }
 
-function createTask(){
+function print(){
     clear()
     if (arrayTasks.length > 0) {
         arrayTasks.forEach(task => {
             const li = document.createElement("li")
-            li.innerHTML = `${task.task} <span task-id=${task.idTask}>X</span>`
+            li.innerHTML = `${task.task} <span class="classli" task-id=${task.idTask}>X</span>`
             tasks.appendChild(li)
         });
     }
+    addToLocalStorage()
+}
+
+function addToLocalStorage(){
+    localStorage.setItem("arrayTasks", JSON.stringify(arrayTasks))
 }
 
 function clear(){
@@ -43,8 +68,9 @@ function clear(){
 }
 
 function deleteList(){
+    id = 0
     arrayTasks = []
-    tasks.innerHTML = ""
+    print()
 }
 
 removeAll.addEventListener("click", deleteList)
