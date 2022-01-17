@@ -15,13 +15,8 @@ function getArrayLocalStorage(){
 }
 
 function deleteTask(e){
-    // if (e.target.tagName == 'SPAN') {
-    //     const deleteId = parseInt(e.target.getAttribute('task-id'));
-    //     arrayTasks = arrayTasks.filter(task => task.id == deleteId);
-    //     print();
-    // }
     const idTask = e.target.getAttribute('task-id')
-    arrayTasks = arrayTasks.filter(task => task.idTask == !idTask)
+    arrayTasks = arrayTasks.filter(task => task.idTask != idTask)
     print()
 
 }

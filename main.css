@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 *{
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
 }
 .container{
     height: 100vh;
@@ -15,16 +17,25 @@
 .main{
     height: 500px;
     width: 400px;
-    background: rgba(255, 255, 255, 0.26);
+    background: rgb(236, 242, 253);
+    /* background: rgba(255, 255, 255, 0.26); */
     box-shadow: 8px 9px 5px 0px rgba(46,45,45,0.77);
     -webkit-box-shadow: 8px 9px 5px 0px rgba(46,45,45,0.77);
     -moz-box-shadow: 8px 9px 5px 0px rgba(46,45,45,0.77);
 }
 .task-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-start;
     padding-top: 5em;
+}
+.input-task{
+    outline: none;
+}
+.add-task{
+    border: none;
+    color: #fff;
+    background:rgba(223, 127, 234, 1) ;
 }
 .list-tasks{
     padding:0 1.8em ;
@@ -32,6 +43,7 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    width: 100%;
 }
 .list-tasks-ul{
     display: flex;
@@ -39,4 +51,13 @@
     justify-content: center;
     flex-direction: column;
     padding-top: 1em;
+    width: 100%;
+}
+.list-tasks-ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    height: 1.5em;
 }
