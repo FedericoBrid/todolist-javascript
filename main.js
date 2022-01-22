@@ -68,5 +68,12 @@ function deleteList(){
     print()
 }
 
+function keydown(e) {
+    if(e.code === "Enter") {
+        task();
+    }
+}
+
 removeAll.addEventListener("click", deleteList)
 addTask.addEventListener("click", task)
+input.addEventListener("keydown", keydown)
