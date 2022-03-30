@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-size: cover;
 }
 .main{
     height: 75vh;
